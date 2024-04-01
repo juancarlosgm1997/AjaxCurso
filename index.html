@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- CSS para utilizar iconos de FontAwesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <title>Ajax</title>
+</head>
+
+<body>
+  <!-- mt- clase margin top con 3 de margen -->
+  <div class="container mt-3">
+    <!-- <a name="" id="leer" class="btn btn-primary href=" #" role="button">Leer</a> -->
+    <!-- Boton para leer JSON -->
+    <!-- <a name="" id="leerEmpleado" class="btn btn-danger href=" #" role="button">Leer Empleado</a> -->
+    <!-- Boton para mostrar un arreglo de objetos JSON -->
+    <!-- <a name="" id="leerEmpleados" class="btn btn-warning href=" #" role="button">Leer Empleados</a> -->
+    <!-- Boton para mostrar los datos mediante getJSON -->
+    <!-- <a name="" id="leerGetJSON" class="btn btn-success href=" #" role="button">Leer Empleados getJSON</a> -->
+    <!-- Campo para filtrar los datos del JSON -->
+    <!-- <div class="form-group mt-2">
+        <label for="">Buscar por nombre</label>
+        <input type="text" class="form-control" id="nombre" aria-describedby="helpId" placeholder="">
+        <small id="helpId" class="form-text text-muted">Help text</small>
+    </div> -->
+    <!-- Botón para utilizar funcion ajax -->
+    <!-- <button type="button" class="btn btn-primary" id="ajax">Ajax</button> -->
+    <!-- Botón para transformar texto usando una petición ajax con php -->
+    <!-- <div class="form-group">
+        <label for=""></label>
+        <input type="text" class="form-control" id="operacion" placeholder="Operacion" value="may">
+        <input type="text" class="form-control" id="texto" placeholder="texto"> -->
+    <!-- Boton convertir -->
+    <!-- <button type="button" class="btn btn-primary" id="convertir">Convertir</button>
+      </div> -->
+    <!-- Alerta para mostra los datos de los empleado -->
+    <!-- <div id="datosEmpleados" class="alert alert-primary" role="alert"> -->
+    <!-- <strong id="datosEmpleado">Datos del Empleado: </strong> -->
+    <!-- <ul id="listaEmpleados">
+          <li>Datos Empleado</li>
+        </ul>
+      </div> -->
+
+    <!-- Envío de Datos en Ajax mediante el método post -->
+    <!-- <form action="">
+      <div class="form-group">
+        <label for="">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" placeholder="">
+        <label for="">Puesto:</label>
+        <input type="text" class="form-control" id="puesto" placeholder="">
+        <button type="submit" class="btn btn-primary" id="enviarDatos">Enviar</button>
+      </div> -->
+    <!-- Mostrar el resultado -->
+    <!-- d-none evita mostrar el alert desde el inicio -->
+    <!-- <div class="alert alert-primary d-none" role="alert">
+        <strong id="resultado"></strong>
+      </div> -->
+    <!-- Mostrar el status de la petición -->
+    <!-- <div class="alert alert-primary d-none" role="alert" id="estado">
+        <strong>primary d-none</strong>
+      </div>
+    </form> -->
+
+    <!-- Menú de navegación para el crud -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="lista-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          aria-selected="true">Lista</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="datos-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+          aria-selected="false">Crear</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+          aria-selected="false">Editar</a>
+      </li> -->
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="lista-tab">
+        <!-- Mostrar datos con Ajax, PHP y MySQL -->
+        <button type="button" class="btn btn-primary" id="leerEmpleados">Leer Empleados</button>
+        <div class="alert alert-primary" role="alert">
+          <ul id="listEmpleados">
+            <li>Lista de Empleados:</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="datos-tab">
+        <!-- Formulario para crear y editar registros -->
+        <div class="form-group">
+          <input type="hidden" id="id">
+          <label for="">Nombre</label>
+          <input type="text" class="form-control" id="nombre">
+          <label for="">Puesto</label>
+          <input type="text" class="form-control" id="puesto">
+          <label for="">Edad</label>
+          <input type="text" class="form-control" id="edad">
+          <!-- Boton para enviar el formulario -->
+          <button type="button" class="btn btn-primary" id="crearEmpleado">Crear</button>
+          <!-- Botón editar -->
+          <button type="button" class="btn btn-primary" id="editarEmpleados">Editar</button>
+        </div>
+      </div>
+      <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div> -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- <script src="js/javascript.js"></script>
+  <script src="js/javascript2.js"></script>
+  <script src="js/javascriptphp.js"></script> -->
+  <!-- <script src="js/jspost.js"></script> -->
+  <!-- Script para brindar la funcionalidad a Bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="js/jsCRUD.js"></script>
+</body>
+
+</html>
